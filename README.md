@@ -1,0 +1,2 @@
+# asset_allocation_skill
+通过把资产配置降维的方法，把资产配置从策略转化为战术，做成AI理财管家
