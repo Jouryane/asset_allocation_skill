@@ -1,0 +1,91 @@
+# 基础配置与文档参数同步 [cite: 1, 12]
+appropriateness_matrix:
+  职业生涯起步: {低: 0.15, 中: 0.35, 高: 0.65}
+  职业生涯稳健期: {低: 0.25, 中: 0.5, 高: 0.8}
+  职业生涯中后期: {低: 0.1, 中: 0.25, 高: 0.6}
+
+# 2. 保险参数（仅保留必要配置）
+insurance_params:
+  insurance_ratio:
+    min: 0.05
+    max: 0.08
+  leverage_ratio: 28  # 保费撬动保额倍数
+
+# 策略匹配规则：市场状态 -> 推荐策略
+strategy_matching_rules:
+  low_valuation:  # 低估值市场
+    recommended_strategy: "value_investing"
+    params:
+      pe_percentile_buy: 0.2
+      pe_percentile_sell: 0.7
+  trending_market:  # 趋势市场
+    recommended_strategy: "trend_following"
+    params:
+      short_window: 5
+      long_window: 20
+  volatile_market:  # 震荡市场
+    recommended_strategy: "mean_reversion"
+    params:
+      window: 30
+      z_score_buy: -1.2
+      z_score_sell: 1.2
+  uncertain_market:  # 不确定市场
+    recommended_strategy: "dollar_cost_averaging"
+    params:
+      interval: "M"
+      amount: 1000
+
+# ETF选品硬性规则
+etf_selection_rules:
+  liquidity_threshold: 100000000  # 日成交额 >= 1亿
+  tracking_error_threshold: 0.01  # 跟踪误差 <= 1%
+  scale_threshold: 5000000000     # 规模 >= 50亿
+
+# 申万一级行业指数映射
+sw_lv1_indices:
+  "801010": {"name": "农林牧渔"}
+  "801030": {"name": "基础化工"}
+  "801040": {"name": "钢铁"}
+  "801050": {"name": "有色金属"}
+  "801080": {"name": "电子"}
+  "801110": {"name": "家用电器"}
+  "801120": {"name": "食品饮料"}
+  "801130": {"name": "纺织服饰"}
+  "801140": {"name": "轻工制造"}
+  "801150": {"name": "医药生物"}
+  "801160": {"name": "公用事业"}
+  "801170": {"name": "交通运输"}
+  "801180": {"name": "房地产"}
+  "801200": {"name": "商贸零售"}
+  "801210": {"name": "社会服务"}
+  "801230": {"name": "综合"}
+  "801710": {"name": "建筑材料"}
+  "801720": {"name": "建筑装饰"}
+  "801730": {"name": "电力设备"}
+  "801740": {"name": "国防军工"}
+  "801750": {"name": "计算机"}
+  "801760": {"name": "传媒"}
+  "801770": {"name": "通信"}
+  "801780": {"name": "银行"}
+  "801790": {"name": "非银金融"}
+  "801880": {"name": "汽车"}
+  "801890": {"name": "机械设备"}
+  "801950": {"name": "煤炭"}
+  "801960": {"name": "石油石化"}
+  "801970": {"name": "环保"}
+  "801980": {"name": "美容护理"} 
+    
+
+
+
+
+
+# 配置钉钉机器人
+MY_ACCESS_TOKEN: "your token"
+MY_SECRET: "your secret"
+
+# --- 请在此处填入你的 Gitee 配置 ---
+ACCESS_TOKEN: "your gitee token" 
+OWNER: "your name"
+REPO: "your repo"
+
